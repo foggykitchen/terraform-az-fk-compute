@@ -1,5 +1,5 @@
 module "loadbalancer" {
-  source = "github.com/foggykitchen/terraform-az-fk-loadbalancer"
+  source = "github.com/mlinxfeld/terraform-az-fk-loadbalancer"
 
   name                = "foggykitchen-lb"
   location            = azurerm_resource_group.foggykitchen_rg.location

@@ -1,5 +1,5 @@
 module "storage" {
-  source = "github.com/foggykitchen/terraform-az-fk-storage"
+  source = "github.com/mlinxfeld/terraform-az-fk-storage"
 
   name                = "${var.storage_name_prefix}${random_string.suffix.result}"
   location            = azurerm_resource_group.foggykitchen_rg.location

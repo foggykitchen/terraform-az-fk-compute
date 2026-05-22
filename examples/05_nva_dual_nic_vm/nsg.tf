@@ -1,5 +1,5 @@
 module "nsg_inside" {
-  source = "github.com/foggykitchen/terraform-az-fk-nsg"
+  source = "github.com/mlinxfeld/terraform-az-fk-nsg"
 
   name                = "${var.nva_vm_name}-inside-nsg"
   location            = azurerm_resource_group.foggykitchen_rg.location
@@ -23,7 +23,7 @@ module "nsg_inside" {
 }
 
 module "nsg_outside" {
-  source = "github.com/foggykitchen/terraform-az-fk-nsg"
+  source = "github.com/mlinxfeld/terraform-az-fk-nsg"
 
   name                = "${var.nva_vm_name}-outside-nsg"
   location            = azurerm_resource_group.foggykitchen_rg.location

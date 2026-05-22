@@ -1,5 +1,5 @@
 module "bastion" {
-  source = "github.com/foggykitchen/terraform-az-fk-bastion"
+  source = "github.com/mlinxfeld/terraform-az-fk-bastion"
 
   name                = "foggykitchen-bastion"
   location            = azurerm_resource_group.foggykitchen_rg.location

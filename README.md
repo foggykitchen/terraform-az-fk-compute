@@ -77,7 +77,7 @@ terraform-az-fk-compute/
 
 ```hcl
 module "compute" {
-  source = "git::https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.1.0"
+  source = "git::https://github.com/mlinxfeld/terraform-az-fk-compute.git?ref=v0.1.0"
 
   name                = "fk-vm-01"
   location            = "westeurope"
@@ -106,7 +106,7 @@ The module can also be used to deploy a simple **router VM** or lightweight **ne
 
 ```hcl
 module "router_vm" {
-  source = "git::https://github.com/foggykitchen/terraform-az-fk-compute.git"
+  source = "git::https://github.com/mlinxfeld/terraform-az-fk-compute.git"
 
   name                = "fk-router-vm"
   location            = "westeurope"
@@ -150,7 +150,7 @@ Example:
 
 ```hcl
 module "router_vm" {
-  source = "git::https://github.com/foggykitchen/terraform-az-fk-compute.git"
+  source = "git::https://github.com/mlinxfeld/terraform-az-fk-compute.git"
 
   name                = "fk-router-vm"
   location            = "westeurope"
@@ -224,13 +224,13 @@ See [examples/05_nva_dual_nic_vm](examples/05_nva_dual_nic_vm/README.md) for a m
 ## 🧩 Related Modules & Training
 
 - [terraform-az-fk-vnet](https://github.com/foggykitchen/terraform-az-fk-vnet)
-- [terraform-az-fk-nsg](https://github.com/foggykitchen/terraform-az-fk-nsg)
-- [terraform-az-fk-loadbalancer](https://github.com/foggykitchen/terraform-az-fk-loadbalancer)
-- [terraform-az-fk-bastion](https://github.com/foggykitchen/terraform-az-fk-bastion)
-- [terraform-az-fk-natgw](https://github.com/foggykitchen/terraform-az-fk-natgw)
-- [terraform-az-fk-disk](https://github.com/foggykitchen/terraform-az-fk-disk)
-- [terraform-az-fk-storage](https://github.com/foggykitchen/terraform-az-fk-storage)
-- [terraform-az-fk-aks](https://github.com/foggykitchen/terraform-az-fk-aks)
+- [terraform-az-fk-nsg](https://github.com/mlinxfeld/terraform-az-fk-nsg)
+- [terraform-az-fk-loadbalancer](https://github.com/mlinxfeld/terraform-az-fk-loadbalancer)
+- [terraform-az-fk-bastion](https://github.com/mlinxfeld/terraform-az-fk-bastion)
+- [terraform-az-fk-natgw](https://github.com/mlinxfeld/terraform-az-fk-natgw)
+- [terraform-az-fk-disk](https://github.com/mlinxfeld/terraform-az-fk-disk)
+- [terraform-az-fk-storage](https://github.com/mlinxfeld/terraform-az-fk-storage)
+- [terraform-az-fk-aks](https://github.com/mlinxfeld/terraform-az-fk-aks)
 
 ---
 

@@ -1,5 +1,5 @@
 module "nsg" {
-  source = "github.com/foggykitchen/terraform-az-fk-nsg"
+  source = "github.com/mlinxfeld/terraform-az-fk-nsg"
 
   name                = "${var.vm_name}-nsg"
   location            = azurerm_resource_group.foggykitchen_rg.location
