@@ -229,7 +229,7 @@ See [examples/05_nva_dual_nic_vm](examples/05_nva_dual_nic_vm/README.md) for a m
 - [terraform-az-fk-bastion](https://github.com/mlinxfeld/terraform-az-fk-bastion)
 - [terraform-az-fk-natgw](https://github.com/mlinxfeld/terraform-az-fk-natgw)
 - [terraform-az-fk-disk](https://github.com/mlinxfeld/terraform-az-fk-disk)
-- [terraform-az-fk-storage](https://github.com/mlinxfeld/terraform-az-fk-storage)
+- [terraform-az-fk-storage](https://github.com/foggykitchen/terraform-az-fk-storage)
 - [terraform-az-fk-aks](https://github.com/mlinxfeld/terraform-az-fk-aks)
 
 ---
