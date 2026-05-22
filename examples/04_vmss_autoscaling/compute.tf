@@ -1,6 +1,6 @@
 module "compute" {
 
-  source = "github.com/mlinxfeld/terraform-az-fk-compute"
+  source = "github.com/foggykitchen/terraform-az-fk-compute"
 
   name                = "${var.vm_name}"
   location            = azurerm_resource_group.foggykitchen_rg.location
