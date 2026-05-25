@@ -4,6 +4,8 @@ This repository contains a reusable **Terraform / OpenTofu module** and progress
 
 It is part of the **[FoggyKitchen.com training ecosystem](https://foggykitchen.com/courses/azure-fundamentals-terraform-course/)** and is designed as a **clean, composable compute layer** that builds on top of an existing Azure networking foundation (VNet, subnets).
 
+This module is also part of the **[Azure Fundamentals with Terraform/OpenTofu — Build Real-World Azure Architectures with Reusable Modules (2026 Edition)](https://foggykitchen.com/courses/azure-fundamentals-terraform-course/)** course. In the training, it is used to move from basic networking into real Azure workload deployment patterns based on reusable virtual machine building blocks.
+
 ---
 
 ## 🎯 Purpose
