@@ -97,16 +97,14 @@ Accessing the Load Balancer public IP should display the NGINX demo page.
 
 ---
 
-## 📚 Related Reading
+## 📚 Related blog post
 
-This example is also covered in a dedicated architectural blog post:
+For a step-by-step walkthrough of this multi-VM foundation, including the load balancer, Bastion access path, and Azure Portal verification, check out the companion article:
 
-**🔗 Private Azure Virtual Machines with Terraform — Load Balancer & Bastion (2026 Edition)**  
+➡️ **Azure Virtual Machines with Load Balancer and Bastion using Terraform/OpenTofu (2026 Edition)**  
 https://foggykitchen.com/2025/12/23/azure-private-vm-terraform/
 
-The article explains the architecture behind this setup —  
-why private VMs + Load Balancer + Bastion are a common baseline  
-before moving toward autoscaling and Kubernetes workloads.
+The article explains why private backend VMs, a public Load Balancer, and Azure Bastion are a practical baseline before moving toward autoscaling or Kubernetes-based workloads.
 
 ---
 
