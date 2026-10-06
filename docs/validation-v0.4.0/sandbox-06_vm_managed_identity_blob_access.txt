@@ -1,0 +1,107 @@
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5 for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0 for rbac...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-storage.git for storage...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on network.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (network.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on rbac.tf line 1:
+   1: module "rbac" {
+
+Could not download module "rbac" (rbac.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/rbac'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-rbac.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on storage.tf line 1:
+   1: module "storage" {
+
+Could not download module "storage" (storage.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-storage.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-storage.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/storage'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-storage.git/': Could not
+resolve host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on network.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on rbac.tf line 1:
+   1: module "rbac" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on storage.tf line 1:
+   1: module "storage" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1

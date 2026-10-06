@@ -18,6 +18,8 @@ and multicloud courses (Azure Fundamentals, AKS, and advanced networking scenari
 | 04 | **VM Scale Set with Autoscaling** | VMSS, autoscale rules, backend integration |
 | 05 | **Dual-NIC NVA VM** | Multi-NIC VM, primary/secondary NICs, static IPs, NIC-level NSGs |
 | 06 | **VM Managed Identity To Blob** | System-assigned managed identity, Blob upload via `az login --identity`, compute-to-storage integration |
+| 07 | **Application Gateway VM Attachment** | Single-NIC VM, pinned gateway composition |
+| 08 | **Application Gateway VMSS Attachment** | Native VMSS attachment, pinned gateway composition |
 
 Each example builds on the **concepts** introduced in the previous one, but can be applied
 independently for learning and experimentation.

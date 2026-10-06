@@ -1,0 +1,134 @@
+$ tofu fmt -check
+compute.tf
+loadbalancer.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-compute.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on loadbalancer.tf line 1:
+   1: module "loadbalancer" {
+
+Could not download module "loadbalancer" (loadbalancer.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/loadbalancer'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git/': Could
+not resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (networks.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 14:
+  14: module "natgw" {
+
+Could not download module "natgw" (networks.tf:14) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-natgw.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-natgw.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/natgw'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-natgw.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+Could not download module "nsg" (nsg.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-nsg.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-nsg.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/nsg'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-nsg.git/': Could not resolve
+host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on loadbalancer.tf line 1:
+   1: module "loadbalancer" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 14:
+  14: module "natgw" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1

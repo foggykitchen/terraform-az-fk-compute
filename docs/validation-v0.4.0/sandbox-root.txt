@@ -1,0 +1,36 @@
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+
+Error: Failed to resolve provider packages
+
+Could not resolve provider hashicorp/azurerm: could not connect to
+registry.opentofu.org: failed to request discovery document: Get
+"https://registry.opentofu.org/.well-known/terraform.json": dial tcp: lookup
+registry.opentofu.org: no such host
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: failed to read schema for azurerm_network_interface.vm_nic in registry.opentofu.org/hashicorp/azurerm: failed to instantiate provider "registry.opentofu.org/hashicorp/azurerm" to obtain schema: Unrecognized remote plugin message:
+Failed to read any lines from plugin's stdout
+This usually means
+  the plugin was not compiled for this architecture,
+  the plugin is missing dynamic-link libraries necessary to run,
+  the plugin is not executable by this process due to file permissions, or
+  the plugin failed to negotiate the initial go-plugin protocol handshake
+
+Additional notes about plugin:
+  Path: .terraform/providers/registry.opentofu.org/hashicorp/azurerm/4.67.0/darwin_arm64/terraform-provider-azurerm
+  Mode: -rwxr-xr-x
+  Owner: 501 [mlinxfeld] (current: 501 [mlinxfeld])
+  Group: 20 [staff] (current: 20 [staff])
+  MachO architecture: CpuArm64 (current architecture: arm64)
+
+
+Exit code: 1

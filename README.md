@@ -45,6 +45,7 @@ Depending on configuration and example used, the module can create:
 - Optional multi-NIC Virtual Machines
 - Optional integration with:
   - Azure Load Balancer backend pools
+  - Azure Application Gateway backend pools
   - Autoscaling (VMSS)
 
 The module intentionally does **not** create:
@@ -70,6 +71,8 @@ terraform-az-fk-compute/
 │   ├── 04_vmss_autoscaling/         
 │   ├── 05_nva_dual_nic_vm/
 │   ├── 06_vm_managed_identity_blob_access/
+│   ├── 07_app_gateway_backend_attachment_vm/
+│   ├── 08_app_gateway_backend_attachment_vmss/
 │   └── README.md
 ├── main.tf
 ├── inputs.tf
@@ -199,6 +202,63 @@ See [examples/05_nva_dual_nic_vm](examples/05_nva_dual_nic_vm/README.md) for a m
 
 ---
 
+## Module Inputs
+
+The complete contract is defined in [inputs.tf](inputs.tf). Structured image and
+NIC fields and validation rules are defined there.
+
+| Input | Type | Default | Description |
+|---|---|---|---|
+| `name` | `string` | `required` | Base name for compute resources |
+| `location` | `string` | `required` | Azure region |
+| `resource_group_name` | `string` | `required` | Resource group name |
+| `deployment_mode` | `string` | `"vm"` | Compute deployment mode: vm or vmss |
+| `subnet_id` | `string` | `null` | Subnet ID where compute resources will be deployed |
+| `enable_ip_forwarding` | `bool` | `false` | Enable IP forwarding on the VM/VMSS NIC. Required for router or NVA-style workloads. |
+| `private_ip_address_allocation` | `string` | `"Dynamic"` | Private IP allocation mode for the primary NIC on a single VM deployment. |
+| `private_ip_address` | `string` | `null` | Static private IP address for the primary NIC on a single VM deployment. Used only when private_ip_address_allocation is set to Static. |
+| `network_interfaces` | `map(object({ subnet_id = string, private_ip_address_allocation = optional(string, "Dynamic"), private_ip_address = optional(string), enable_ip_forwarding = optional(bool, false), attach_nsg_to_nic = optional(bool, false), nsg_id = optional(string), primary = optional(bool, false) }))` | `null` | Optional multi-NIC definition for VM deployments. When null, the module uses the existing single-NIC inputs. |
+| `admin_username` | `string` | `"azureuser"` | Admin username for Linux VM/VMSS |
+| `ssh_public_key` | `string` | `required` | SSH public key |
+| `vm_size` | `string` | `"Standard_D2s_v5"` | VM size |
+| `image_reference` | `object({ publisher = string, offer = string, sku = string, version = string })` | `{ publisher = "Canonical", offer = "0001-com-ubuntu-server-jammy", sku = "22_04-lts-gen2", version = "latest" }` | Linux image reference |
+| `lb_attachment` | `object({ backend_pool_id = string })` | `null` | Optional Load Balancer backend pool attachment |
+| `app_gateway_attachment` | `object({ backend_pool_id = string })` | `null` | Optional Application Gateway backend pool attachment (single-NIC VM or VMSS), independent of lb_attachment |
+| `enable_autoscale` | `bool` | `false` | Enable autoscaling (VMSS only) |
+| `instance_count` | `number` | `1` | Default number of instances (VMSS) |
+| `autoscale_min_instances` | `number` | `1` | VMSS autoscale setting |
+| `autoscale_max_instances` | `number` | `3` | VMSS autoscale setting |
+| `autoscale_cpu_scale_out_threshold` | `number` | `70` | VMSS autoscale setting |
+| `autoscale_cpu_scale_in_threshold` | `number` | `30` | VMSS autoscale setting |
+| `autoscale_cooldown` | `string` | `"PT5M"` | VMSS autoscale setting |
+| `tags` | `map(string)` | `{}` | Common tags |
+| `attach_nsg_to_nic` | `bool` | `false` | Whether to associate an NSG to the VM NIC (NIC-level NSG). |
+| `nsg_id` | `string` | `null` | Optional NSG ID to associate to the NIC (single VM). If null, no NIC-level NSG association is made. |
+| `custom_data` | `string` | `null` | Base64-encoded custom_data (cloud-init). Null disables custom_data. |
+| `identity_type` | `string` | `"None"` | Managed identity type for compute resources. Use None to disable or SystemAssigned to enable a system-assigned managed identity. |
+
+## Backend Pool Attachments
+
+For either `deployment_mode = "vm"` (single NIC) or `"vmss"`, add this to
+your compute module block after supplying its required compute inputs:
+
+```hcl
+lb_attachment = {
+  backend_pool_id = module.loadbalancer.backend_pool_id
+}
+app_gateway_attachment = {
+  backend_pool_id = module.app_gateway.backend_address_pool_ids["web"]
+}
+```
+
+Both inputs default to `null` and can be used independently or together. The VM
+path uses the dedicated Application Gateway NIC association resource; the VMSS
+path uses `application_gateway_backend_address_pool_ids`. Multi-NIC VM attachment
+is rejected because the input does not select a NIC. Application Gateway must
+use a dedicated subnet; VMSS must share its VNet. The existing
+`attached_backend_pool_ids` output remains LB-only; the new
+`attached_app_gateway_backend_pool_ids` returns the gateway ID as a list, or `[]`.
+
 ## 📤 Outputs
 
 | Output | Description |
@@ -208,16 +268,30 @@ See [examples/05_nva_dual_nic_vm](examples/05_nva_dual_nic_vm/README.md) for a m
 | `vm_principal_id` | Principal ID of the VM managed identity |
 | `vm_tenant_id` | Tenant ID of the VM managed identity |
 | `vm_private_ip` | Private IP address of the VM primary NIC |
-| `vm_private_ips` | Private IP addresses of all VM NICs |
+| `vm_private_ips` | Private IP addresses of the VM NICs |
 | `vm_nic_ids` | NIC IDs of the VM |
 | `backend_nic_ids` | NIC IDs usable as LB backend targets |
-| `vmss_id` | VM Scale Set ID (if used) |
+| `vmss_id` | VM Scale Set ID |
 | `vmss_principal_id` | Principal ID of the VMSS managed identity |
 | `vmss_tenant_id` | Tenant ID of the VMSS managed identity |
 | `autoscale_setting_id` | Autoscale setting ID (if enabled) |
+| `attached_app_gateway_backend_pool_ids` | Application Gateway backend pool IDs this compute instance is attached to |
 | `attached_backend_pool_ids` | Backend pool IDs this compute instance is attached to |
 
 ---
+
+## Examples Overview
+
+| Example | Title | Key Topics |
+|:-------:|:------|:-----------|
+| 01 | **Single Virtual Machine** | Minimal Linux VM, NIC attachment, compute basics |
+| 02 | **Single VM with NSG** | Network Security Groups and inbound/outbound control |
+| 03 | **Multiple VMs with Load Balancer** | Azure Load Balancer, backend pools, health probes |
+| 04 | **VM Scale Set with Autoscaling** | VMSS, autoscale rules, backend integration |
+| 05 | **Dual-NIC NVA VM** | Multi-NIC VM, primary/secondary NICs, static IPs, NIC-level NSGs |
+| 06 | **VM Managed Identity To Blob** | System-assigned managed identity, Blob upload via `az login --identity`, compute-to-storage integration |
+| 07 | **Application Gateway VM Attachment** | Single-NIC VM, pinned gateway composition |
+| 08 | **Application Gateway VMSS Attachment** | Native VMSS attachment, pinned gateway composition |
 
 ## 🧠 Design Philosophy
 

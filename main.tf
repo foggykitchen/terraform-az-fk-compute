@@ -157,6 +157,11 @@ resource "azurerm_linux_virtual_machine" "vm" {
     }
 
     precondition {
+      condition     = !local.use_multi_nic || var.app_gateway_attachment == null
+      error_message = "app_gateway_attachment is currently supported only in the single-NIC VM deployment path."
+    }
+
+    precondition {
       condition     = !local.use_multi_nic || var.lb_attachment == null
       error_message = "lb_attachment is currently supported only in the single-NIC VM deployment path."
     }
@@ -169,6 +174,14 @@ resource "azurerm_network_interface_backend_address_pool_association" "vm_lb_att
   network_interface_id    = azurerm_network_interface.vm_nic[0].id
   ip_configuration_name   = local.nic_ipconfig_name
   backend_address_pool_id = var.lb_attachment.backend_pool_id
+}
+
+resource "azurerm_network_interface_application_gateway_backend_address_pool_association" "vm_app_gateway_attach" {
+  count = var.deployment_mode == "vm" && !local.use_multi_nic && var.app_gateway_attachment != null ? 1 : 0
+
+  network_interface_id    = azurerm_network_interface.vm_nic[0].id
+  ip_configuration_name   = local.nic_ipconfig_name
+  backend_address_pool_id = var.app_gateway_attachment.backend_pool_id
 }
 
 # =========================
@@ -210,6 +223,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmss" {
       name      = local.nic_ipconfig_name
       primary   = true
       subnet_id = var.subnet_id
+
+      application_gateway_backend_address_pool_ids = (
+        var.app_gateway_attachment != null ? [var.app_gateway_attachment.backend_pool_id] : []
+      )
 
       load_balancer_backend_address_pool_ids = (
         var.lb_attachment != null ? [var.lb_attachment.backend_pool_id] : []

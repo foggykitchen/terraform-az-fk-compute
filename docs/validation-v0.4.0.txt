@@ -1,0 +1,1690 @@
+===== 01_single_vm.txt =====
+$ tofu fmt -check
+compute.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Using previously-installed hashicorp/azurerm v3.117.1
+- Using previously-installed hashicorp/tls v4.2.1
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 02_single_vm_with_nsg.txt =====
+$ tofu fmt -check
+compute.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Using previously-installed hashicorp/azurerm v3.117.1
+- Using previously-installed hashicorp/tls v4.2.1
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 03_multiple_vms_with_lb.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+- loadbalancer in .terraform/modules/loadbalancer
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+- natgw in .terraform/modules/natgw
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/azurerm v3.117.1
+- Using previously-installed hashicorp/tls v4.2.1
+- Using previously-installed hashicorp/null v3.2.4
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 04_vmss_autoscaling.txt =====
+$ tofu fmt -check
+compute.tf
+loadbalancer.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+- loadbalancer in .terraform/modules/loadbalancer
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+- natgw in .terraform/modules/natgw
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/tls v4.2.1
+- Using previously-installed hashicorp/null v3.2.4
+- Using previously-installed hashicorp/azurerm v3.117.1
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 05_nva_dual_nic_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg_inside...
+- nsg_inside in .terraform/modules/nsg_inside
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg_outside...
+- nsg_outside in .terraform/modules/nsg_outside
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/tls...
+- Finding hashicorp/azurerm versions matching "~> 3.0, >= 3.100.0, < 5.0.0"...
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/azurerm v3.117.1...
+- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 06_vm_managed_identity_blob_access.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5 for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0 for rbac...
+- rbac in .terraform/modules/rbac
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-storage.git for storage...
+- storage in .terraform/modules/storage
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/tls from the dependency lock file
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/random from the dependency lock file
+- Using previously-installed hashicorp/tls v4.2.1
+- Using previously-installed hashicorp/azurerm v4.68.0
+- Using previously-installed hashicorp/random v3.8.1
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 07_app_gateway_backend_attachment_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Using previously-installed hashicorp/null v3.3.2
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== 08_app_gateway_backend_attachment_vmss.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/null v3.3.2
+- Using previously-installed hashicorp/azurerm v4.81.0
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-nsg-07_app_gateway_backend_attachment_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-public-ip.git?ref=v1.0.0 for gateway_public_ip...
+- gateway_public_ip in .terraform/modules/gateway_public_ip
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+- natgw in .terraform/modules/natgw
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Finding latest version of hashicorp/null...
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Installing hashicorp/null v3.3.2...
+- Installed hashicorp/null v3.3.2 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has made some changes to the provider dependency selections recorded
+in the .terraform.lock.hcl file. Review those changes and commit them to your
+version control system if they represent changes you intended to make.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-nsg-08_app_gateway_backend_attachment_vmss.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-public-ip.git?ref=v1.0.0 for gateway_public_ip...
+- gateway_public_ip in .terraform/modules/gateway_public_ip
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+- natgw in .terraform/modules/natgw
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Finding latest version of hashicorp/null...
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Installing hashicorp/null v3.3.2...
+- Installed hashicorp/null v3.3.2 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has made some changes to the provider dependency selections recorded
+in the .terraform.lock.hcl file. Review those changes and commit them to your
+version control system if they represent changes you intended to make.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-resource-group-07_app_gateway_backend_attachment_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/null v3.3.2
+- Using previously-installed hashicorp/azurerm v4.81.0
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-resource-group-08_app_gateway_backend_attachment_vmss.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Using previously-installed hashicorp/null v3.3.2
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-subnet-rename-07_app_gateway_backend_attachment_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Using previously-installed hashicorp/null v3.3.2
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-subnet-rename-08_app_gateway_backend_attachment_vmss.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/null v3.3.2
+- Using previously-installed hashicorp/azurerm v4.81.0
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-vm-size-07_app_gateway_backend_attachment_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Using previously-installed hashicorp/null v3.3.2
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== before-vm-size-08_app_gateway_backend_attachment_vmss.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.81.0
+- Using previously-installed hashicorp/null v3.3.2
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== local-compat-01_single_vm.txt =====
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading file:///Users/mlinxfeld/codes/github/terraform-az-fk-compute for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "~> 3.0, >= 3.100.0, < 5.0.0"...
+- Finding latest version of hashicorp/tls...
+- Installing hashicorp/azurerm v3.117.1...
+- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== local-compat-02_single_vm_with_nsg.txt =====
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading file:///Users/mlinxfeld/codes/github/terraform-az-fk-compute for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/tls...
+- Finding hashicorp/azurerm versions matching "~> 3.0, >= 3.100.0, < 5.0.0"...
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/azurerm v3.117.1...
+- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== local-compat-03_multiple_vms_with_lb.txt =====
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/mlinxfeld/terraform-az-fk-bastion.git for bastion...
+- bastion in .terraform/modules/bastion
+Downloading file:///Users/mlinxfeld/codes/github/terraform-az-fk-compute for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+- loadbalancer in .terraform/modules/loadbalancer
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+- natgw in .terraform/modules/natgw
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "~> 3.0, >= 3.100.0, < 5.0.0"...
+- Finding latest version of hashicorp/tls...
+- Finding latest version of hashicorp/null...
+- Installing hashicorp/azurerm v3.117.1...
+- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/null v3.3.2...
+- Installed hashicorp/null v3.3.2 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== local-compat-04_vmss_autoscaling.txt =====
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/mlinxfeld/terraform-az-fk-bastion.git for bastion...
+- bastion in .terraform/modules/bastion
+Downloading file:///Users/mlinxfeld/codes/github/terraform-az-fk-compute for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+- loadbalancer in .terraform/modules/loadbalancer
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+- natgw in .terraform/modules/natgw
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+- nsg in .terraform/modules/nsg
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding latest version of hashicorp/tls...
+- Finding latest version of hashicorp/null...
+- Finding hashicorp/azurerm versions matching "~> 3.0, >= 3.100.0, < 5.0.0"...
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/null v3.3.2...
+- Installed hashicorp/null v3.3.2 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/azurerm v3.117.1...
+- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== local-compat-05_nva_dual_nic_vm.txt =====
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading file:///Users/mlinxfeld/codes/github/terraform-az-fk-compute for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg_inside...
+- nsg_inside in .terraform/modules/nsg_inside
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg_outside...
+- nsg_outside in .terraform/modules/nsg_outside
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching "~> 3.0, >= 3.100.0, < 5.0.0"...
+- Finding latest version of hashicorp/tls...
+- Installing hashicorp/azurerm v3.117.1...
+- Installed hashicorp/azurerm v3.117.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== local-compat-06_vm_managed_identity_blob_access.txt =====
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading file:///Users/mlinxfeld/codes/github/terraform-az-fk-compute for compute...
+- compute in .terraform/modules/compute
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0 for rbac...
+- rbac in .terraform/modules/rbac
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-storage.git for storage...
+- storage in .terraform/modules/storage
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+- vnet in .terraform/modules/vnet
+
+Initializing provider plugins...
+- Finding hashicorp/azurerm versions matching ">= 3.100.0, < 5.0.0"...
+- Finding hashicorp/random versions matching "~> 3.0"...
+- Finding hashicorp/tls versions matching "~> 4.0"...
+- Installing hashicorp/azurerm v4.81.0...
+- Installed hashicorp/azurerm v4.81.0 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/random v3.9.1...
+- Installed hashicorp/random v3.9.1 (signed, key ID 0C0AF313E5FD9F80)
+- Installing hashicorp/tls v4.4.1...
+- Installed hashicorp/tls v4.4.1 (signed, key ID 0C0AF313E5FD9F80)
+
+Providers are signed by their developers.
+If you'd like to know more about provider signing, you can read about it here:
+https://opentofu.org/docs/cli/plugins/signing/
+
+OpenTofu has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that OpenTofu can guarantee to make the same selections by default when
+you run "tofu init" in the future.
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== root.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Using previously-installed hashicorp/azurerm v4.67.0
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+
+===== sandbox-01_single_vm.txt =====
+$ tofu fmt -check
+compute.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-compute.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (networks.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-02_single_vm_with_nsg.txt =====
+$ tofu fmt -check
+compute.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-compute.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (networks.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+Could not download module "nsg" (nsg.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-nsg.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-nsg.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/nsg'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-nsg.git/': Could not resolve
+host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-03_multiple_vms_with_lb.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-compute.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on loadbalancer.tf line 1:
+   1: module "loadbalancer" {
+
+Could not download module "loadbalancer" (loadbalancer.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/loadbalancer'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git/': Could
+not resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (networks.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 14:
+  14: module "natgw" {
+
+Could not download module "natgw" (networks.tf:14) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-natgw.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-natgw.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/natgw'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-natgw.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+Could not download module "nsg" (nsg.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-nsg.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-nsg.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/nsg'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-nsg.git/': Could not resolve
+host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on loadbalancer.tf line 1:
+   1: module "loadbalancer" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 14:
+  14: module "natgw" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-04_vmss_autoscaling.txt =====
+$ tofu fmt -check
+compute.tf
+loadbalancer.tf
+terraform.tfvars
+Exit code: 3
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git for loadbalancer...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-natgw.git for natgw...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-compute.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on loadbalancer.tf line 1:
+   1: module "loadbalancer" {
+
+Could not download module "loadbalancer" (loadbalancer.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/loadbalancer'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-loadbalancer.git/': Could
+not resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (networks.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networks.tf line 14:
+  14: module "natgw" {
+
+Could not download module "natgw" (networks.tf:14) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-natgw.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-natgw.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/natgw'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-natgw.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+Could not download module "nsg" (nsg.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-nsg.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-nsg.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/nsg'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-nsg.git/': Could not resolve
+host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on loadbalancer.tf line 1:
+   1: module "loadbalancer" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networks.tf line 14:
+  14: module "natgw" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on nsg.tf line 1:
+   1: module "nsg" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-05_nva_dual_nic_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg_inside...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-nsg.git for nsg_outside...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-compute.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on networking.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (networking.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on nsg.tf line 1:
+   1: module "nsg_inside" {
+
+Could not download module "nsg_inside" (nsg.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-nsg.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-nsg.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/nsg_inside'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-nsg.git/': Could not resolve
+host: github.com
+
+
+
+Error: Failed to download module
+
+  on nsg.tf line 25:
+  25: module "nsg_outside" {
+
+Could not download module "nsg_outside" (nsg.tf:25) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-nsg.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-nsg.git':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/nsg_outside'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-nsg.git/': Could not resolve
+host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on networking.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on nsg.tf line 1:
+   1: module "nsg_inside" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on nsg.tf line 25:
+  25: module "nsg_outside" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-06_vm_managed_identity_blob_access.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5 for compute...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0 for rbac...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-storage.git for storage...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-vnet.git for vnet...
+
+Error: Failed to download module
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+Could not download module "compute" (compute.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-compute.git?ref=v0.3.5':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/compute'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-compute.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on network.tf line 1:
+   1: module "vnet" {
+
+Could not download module "vnet" (network.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-vnet.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-vnet.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/vnet'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-vnet.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on rbac.tf line 1:
+   1: module "rbac" {
+
+Could not download module "rbac" (rbac.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-rbac.git?ref=v0.1.0':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/rbac'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-rbac.git/': Could not
+resolve host: github.com
+
+
+
+Error: Failed to download module
+
+  on storage.tf line 1:
+   1: module "storage" {
+
+Could not download module "storage" (storage.tf:1) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-storage.git": error
+downloading 'https://github.com/foggykitchen/terraform-az-fk-storage.git':
+/usr/bin/git exited with 128: Cloning into '.terraform/modules/storage'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-storage.git/': Could not
+resolve host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on compute.tf line 1:
+   1: module "compute" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on network.tf line 1:
+   1: module "vnet" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on rbac.tf line 1:
+   1: module "rbac" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+
+Error: Module not installed
+
+  on storage.tf line 1:
+   1: module "storage" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-07_app_gateway_backend_attachment_vm.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1 for app_gateway...
+- compute in ../..
+
+Error: Failed to download module
+
+  on main.tf line 30:
+  30: module "app_gateway" {
+
+Could not download module "app_gateway" (main.tf:30) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/app_gateway'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-application-gateway.git/':
+Could not resolve host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on main.tf line 30:
+  30: module "app_gateway" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-08_app_gateway_backend_attachment_vmss.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1 for app_gateway...
+- compute in ../..
+
+Error: Failed to download module
+
+  on main.tf line 30:
+  30: module "app_gateway" {
+
+Could not download module "app_gateway" (main.tf:30) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/app_gateway'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-application-gateway.git/':
+Could not resolve host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on main.tf line 30:
+  30: module "app_gateway" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
+
+
+===== sandbox-root.txt =====
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+
+Error: Failed to resolve provider packages
+
+Could not resolve provider hashicorp/azurerm: could not connect to
+registry.opentofu.org: failed to request discovery document: Get
+"https://registry.opentofu.org/.well-known/terraform.json": dial tcp: lookup
+registry.opentofu.org: no such host
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: failed to read schema for azurerm_network_interface.vm_nic in registry.opentofu.org/hashicorp/azurerm: failed to instantiate provider "registry.opentofu.org/hashicorp/azurerm" to obtain schema: Unrecognized remote plugin message:
+Failed to read any lines from plugin's stdout
+This usually means
+  the plugin was not compiled for this architecture,
+  the plugin is missing dynamic-link libraries necessary to run,
+  the plugin is not executable by this process due to file permissions, or
+  the plugin failed to negotiate the initial go-plugin protocol handshake
+
+Additional notes about plugin:
+  Path: .terraform/providers/registry.opentofu.org/hashicorp/azurerm/4.67.0/darwin_arm64/terraform-provider-azurerm
+  Mode: -rwxr-xr-x
+  Owner: 501 [mlinxfeld] (current: 501 [mlinxfeld])
+  Group: 20 [staff] (current: 20 [staff])
+  MachO architecture: CpuArm64 (current architecture: arm64)
+
+
+Exit code: 1
+
+=== Updated examples consuming Application Gateway v0.1.2 ===
+
+=== 07_app_gateway_backend_attachment_vm ===
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.2 for app_gateway...
+- app_gateway in .terraform/modules/app_gateway
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/null v3.3.2
+- Using previously-installed hashicorp/azurerm v4.81.0
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0
+
+=== 08_app_gateway_backend_attachment_vmss ===
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.2 for app_gateway...
+- app_gateway in .terraform/modules/app_gateway
+
+Initializing provider plugins...
+- Reusing previous version of hashicorp/azurerm from the dependency lock file
+- Reusing previous version of hashicorp/null from the dependency lock file
+- Using previously-installed hashicorp/null v3.3.2
+- Using previously-installed hashicorp/azurerm v4.81.0
+
+OpenTofu has been successfully initialized!
+
+You may now begin working with OpenTofu. Try running "tofu plan" to see
+any changes that are required for your infrastructure. All OpenTofu commands
+should now work.
+
+If you ever set or change modules or backend configuration for OpenTofu,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.
+Exit code: 0
+
+$ tofu validate -no-color
+Success! The configuration is valid.
+Exit code: 0

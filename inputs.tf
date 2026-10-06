@@ -109,6 +109,14 @@ variable "lb_attachment" {
   default = null
 }
 
+variable "app_gateway_attachment" {
+  description = "Optional Application Gateway backend pool attachment (single-NIC VM or VMSS), independent of lb_attachment"
+  type = object({
+    backend_pool_id = string
+  })
+  default = null
+}
+
 # -------- VMSS / Autoscale --------
 
 variable "enable_autoscale" {

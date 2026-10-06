@@ -89,3 +89,10 @@ output "attached_backend_pool_ids" {
   )
   description = "Backend pool IDs this compute instance is attached to"
 }
+
+output "attached_app_gateway_backend_pool_ids" {
+  value = (
+    var.app_gateway_attachment != null ? [var.app_gateway_attachment.backend_pool_id] : []
+  )
+  description = "Application Gateway backend pool IDs this compute instance is attached to"
+}

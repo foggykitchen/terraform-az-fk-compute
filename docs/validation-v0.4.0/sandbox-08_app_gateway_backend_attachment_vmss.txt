@@ -1,0 +1,36 @@
+$ tofu fmt -check
+Exit code: 0
+
+$ tofu init -backend=false -input=false -no-color
+Initializing modules...
+Downloading git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1 for app_gateway...
+- compute in ../..
+
+Error: Failed to download module
+
+  on main.tf line 30:
+  30: module "app_gateway" {
+
+Could not download module "app_gateway" (main.tf:30) source code from
+"git::https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1":
+error downloading
+'https://github.com/foggykitchen/terraform-az-fk-application-gateway.git?ref=v0.1.1':
+/usr/bin/git exited with 128: Cloning into
+'.terraform/modules/app_gateway'...
+fatal: unable to access
+'https://github.com/foggykitchen/terraform-az-fk-application-gateway.git/':
+Could not resolve host: github.com
+
+
+Exit code: 1
+
+$ tofu validate -no-color
+
+Error: Module not installed
+
+  on main.tf line 30:
+  30: module "app_gateway" {
+
+This module is not yet installed. Run "tofu init" to install all modules
+required by this configuration.
+Exit code: 1
